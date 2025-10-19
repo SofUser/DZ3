@@ -4,6 +4,9 @@ public abstract sealed class Transport permits Car, ElectricCar, Ship, Airplane,
     protected boolean engineRunning;
 
     public Transport(String name, Engine engine) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Название транспорта не может быть пустым");
+        }
         this.name = name;
         this.engine = engine;
         this.engineRunning = false;
